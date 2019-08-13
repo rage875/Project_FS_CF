@@ -2,7 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rage875.github.io/Project_FS_Central_front",
+  "homepage": "https://rage875.github.io/Project_FS_CF",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",

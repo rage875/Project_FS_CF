@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {BrowserRouter, Route} from "react-router-dom"
+import {HashRouter, Route} from "react-router-dom"
 
 // Styles
 import "./App.css";
@@ -11,7 +11,7 @@ import Register from "../pages/register";
 import Profile from "../pages/profile";
 
 // Global fetch from json-server -w db.json
-const SERVER_URL = "http://localhost:9000"
+const SERVER_URL = "https://thawing-peak-48129.herokuapp.com"
 
 ///////////////////////////////////////////////////////////////////////////////
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
 
     return (
       <div>
-        <BrowserRouter>
+        <HashRouter basename="/">
           <Route 
             exact path={"/"}
             render = {() => <Main server_url={SERVER_URL}/>}
@@ -44,7 +44,7 @@ class App extends Component {
             exact path={"/register"}
             render = {()=> <Register server_url={SERVER_URL}/>}
           />
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }
