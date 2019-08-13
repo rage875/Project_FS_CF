@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {HashRouter, Route} from "react-router-dom"
+import {Switch, HashRouter, Route} from "react-router-dom"
 
 // Styles
 import "./App.css";
@@ -22,30 +22,32 @@ class App extends Component {
   }
 
   ///////////////////////////////////////////////////////////////////////////////
-  render(){
+  render() {
 
     return (
-      <div>
-        <HashRouter basename="/">
-          <Route 
-            exact path={"/"}
-            render = {() => <Main server_url={SERVER_URL}/>}
-          />
-          <Route
-            exact path={"/login"}
-            render = {()=> <Login server_url={SERVER_URL}/>}
-          />
-          <Route
-            path={"/profile/:username?"}
-            //...props
-            render = {(props)=> <Profile server_url={SERVER_URL} {...props}/>}
-          />
-          <Route
-            exact path={"/register"}
-            render = {()=> <Register server_url={SERVER_URL}/>}
-          />
-        </HashRouter>
-      </div>
+      <HashRouter basename="/">
+        <div>
+          <Switch>
+            <Route
+              exact path={"/"}
+              render={() => <Main server_url={SERVER_URL} />}
+            />
+            <Route
+              exact path={"/login"}
+              render={() => <Login server_url={SERVER_URL} />}
+            />
+            <Route
+              path={"/profile/:username?"}
+              //...props
+              render={(props) => <Profile server_url={SERVER_URL} {...props} />}
+            />
+            <Route
+              exact path={"/register"}
+              render={() => <Register server_url={SERVER_URL} />}
+            />
+          </Switch>
+        </div>
+      </HashRouter>
     );
   }
 }
