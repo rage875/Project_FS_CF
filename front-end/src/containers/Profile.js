@@ -101,7 +101,7 @@ class Profile extends Component {
       },
       body: JSON.stringify(user)
     })
-      .then(res => console.log(res))
+      .then(res => {if (200===res.status) alert("User successfully updated")})
       .catch(error => console.error("Error:", error));
   }
 
