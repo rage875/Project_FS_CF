@@ -185,6 +185,7 @@ class Profile extends Component {
 
     for (let item in profileInfo) {
       let formParsedElem = {
+        label: `${item}`,
         type: ("password" === item || "email" === item) ? (item) : ("text"),
         placeholder: `${profileInfo[item]}`,
         name: `${typeInfo}:${item}`,
@@ -200,6 +201,7 @@ class Profile extends Component {
 
     for (let item in profileInfo.defaultPrinterInfo) {
       let formParsedElem = {
+        label: `defPrint - ${item}`,
         type: ("password" === item || "email" === item) ? (item) : ("text"),
         placeholder: `${profileInfo.defaultPrinterInfo[item]}`,
         name: `${typeInfo}:defaultPrinterInfo:${item}`,
@@ -223,6 +225,7 @@ class Profile extends Component {
     for (let item in profileInfo) {
       if ("printers" !== item) {
         let formParsedElem = {
+          label: `${item}`,
           type: "text",
           placeholder: `${profileInfo[item]}`,
           name: `${typeInfo}:${item}`,
@@ -238,6 +241,7 @@ class Profile extends Component {
       profileInfo.printers.forEach((printer) => {
         for (let item in printer) {
           let formParsedElem = {
+            label: `Printer${printer.index} - ${item}`,
             type: "text",
             placeholder: `${printer[item]}`,
             name: `${typeInfo}:printers:${printer.index - 1}:${item}`,
@@ -245,7 +249,9 @@ class Profile extends Component {
             disabled: ("index" === item) ? (true) : (false),
           }
 
-          parsedInfo.push(formParsedElem)
+          if("_id" !== item){
+            parsedInfo.push(formParsedElem);
+          }
         }
       })
     }
@@ -257,7 +263,7 @@ class Profile extends Component {
     const profileInfo = profileIn;
     let profileForm = profileInfo.map((elem, index) => (
       <div className="form-group row col" key={index}>
-        <label className="col-sm-2 col-form-label col-form-label-sm">{`${elem.name}`}</label>
+        <label className="col-sm-2 col-form-label col-form-label-sm">{`${elem.label}`}</label>
         <div className="col-sm-10">
           <input
             className="form-control"
